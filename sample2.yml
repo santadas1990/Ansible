@@ -4,6 +4,6 @@
   become: true
   tasks:
     - name: Ensure Nginx is at the latest version
-      apt:
+      dnf:
         name: nginx
         state: latest
