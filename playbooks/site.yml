@@ -1,0 +1,10 @@
+---
+# Site playbook
+# This is the main playbook for the Ansible project
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Example task
+      debug:
+        msg: "Hello from site.yml"
