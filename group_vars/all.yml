@@ -1,0 +1,4 @@
+---
+# Global variables for all hosts
+# Add your global variables here
+environment: production

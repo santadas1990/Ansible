@@ -1,0 +1,22 @@
+---
+- name: Example Ansible Playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update system packages
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Install basic packages
+      package:
+        name:
+          - git
+          - curl
+          - wget
+        state: present
+
+    - name: Display system information
+      debug:
+        msg: "System hostname is {{ inventory_hostname }}"
