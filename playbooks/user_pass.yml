@@ -1,7 +1,7 @@
 ---
 - name: Create user Rock with encrypted password
-  hosts: localhost
-  gather_facts: no
+  hosts: all
+  become: true
   vars:
     # Define the password for the Rock user
     rock_password: "RockPassword123!"

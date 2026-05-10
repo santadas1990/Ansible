@@ -1,0 +1,16 @@
+---
+- name: Firewall changes
+  hosts: all
+  become: true
+  tasks:
+  - name: open port 80 for http and check enable the state 
+    ansible.posix.firewalld:
+      service: https
+      state: enabled
+      permanent: true
+      immediate: true
+      offline: true \
+
+  - name: reload the firewalld service and check if enable no need to restart the service
+    ansible.posix.firewalld:
+      state: reloaded
