@@ -1,0 +1,33 @@
+---
+- name: Create user Rock with encrypted password
+  hosts: localhost
+  gather_facts: no
+  vars:
+    # Define the password for the Rock user
+    rock_password: "RockPassword123!"
+  
+  tasks:
+    - name: Create user Rock with encrypted password
+      user:
+        name: Rock
+        password: "{{ rock_password | password_hash('sha512_crypt') }}"
+        shell: /bin/bash
+        home: /home/Rock
+        createhome: yes
+        state: present
+      become: yes
+      register: user_creation
+
+    - name: Display user creation result
+      debug:
+        msg: "User Rock created successfully"
+      when: user_creation is changed
+
+    - name: Ensure Rock user has sudo privileges (optional)
+      lineinfile:
+        path: /etc/sudoers
+        line: "Rock ALL=(ALL) NOPASSWD:ALL"
+        validate: /usr/sbin/visudo -cf %s
+        state: present
+      become: yes
+      ignore_errors: yes
