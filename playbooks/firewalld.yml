@@ -3,13 +3,22 @@
   hosts: all
   become: true
   tasks:
-  - name: open port 80 for http and check enable the state 
+  - name: Ensure firewalld service is enabled and running
+    service:
+      name: firewalld
+      state: started
+      enabled: true
+    register: firewalld_service
+
+  - name: Open port 80 for HTTP
     ansible.posix.firewalld:
-      service: https
+      service: http
       state: enabled
       permanent: true
-      immediate: true 
+      immediate: true
+    register: firewalld_http
 
-  - name: reload the firewalld service and check if enable no need to restart the service
+  - name: Reload firewalld if changes were made
     ansible.posix.firewalld:
       state: reloaded
+    when: firewalld_service.changed or firewalld_http.changed
