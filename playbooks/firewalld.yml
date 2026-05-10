@@ -8,8 +8,7 @@
       service: https
       state: enabled
       permanent: true
-      immediate: true
-      offline: true \
+      immediate: true 
 
   - name: reload the firewalld service and check if enable no need to restart the service
     ansible.posix.firewalld:
