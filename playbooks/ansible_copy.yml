@@ -1,6 +1,6 @@
 ---
 - name: Copying files
-  hosts: web1
+  hosts: all
   become: true
   tasks:
     - name: Copy a file to the remote server
@@ -11,4 +11,11 @@
         group: ansible
         mode: '0644'
         backup: yes
-        
+    - name: Create a director with file bulletin
+      ansible.builtin.file:
+        path: /tmp
+        state: directory
+        mode: '0755' 
+       
+
+
