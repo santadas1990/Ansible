@@ -13,7 +13,7 @@
         backup: yes
     - name: Create a director with file bulletin
       ansible.builtin.file:
-        path: /tmp
+        path: /tmp/new
         state: directory
         mode: '0755' 
        
