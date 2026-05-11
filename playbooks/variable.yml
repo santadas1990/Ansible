@@ -6,13 +6,13 @@
       vars:
         app: nginx
       dnf:
-        name: " {{ app }} "
+        name: "{{ app }}"
         state: present
       tags: install_nginx
 
     - name: Start Nginx service
       service:
-        name: " {{ app }} "
+        name: "{{ app }}"
         state: started
         enabled: true
       tags: nginx_start
