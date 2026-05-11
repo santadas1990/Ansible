@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name: Firewall reload
-      ansible.posix.firewalld:
+      firewalld:
         port: 8081/tcp
         permanent: true
         state: enabled
