@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx
+      dnf:
+        name: nginx
+        state: present
+      tags: install_nginx
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: true
+      tags: nginx_start
+
