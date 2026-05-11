@@ -1,10 +1,10 @@
 ---
 - hosts: all
   become: true
+  vars:
+    app: nginx
   tasks:
     - name: Install Nginx
-      vars:
-        app: nginx
       dnf:
         name: "{{ app }}"
         state: present
