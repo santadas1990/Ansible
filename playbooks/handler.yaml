@@ -11,7 +11,7 @@
 
   handlers:
     - name: Restart firewalld
-      ansible.posix.firewalld:
+      service:
         state: reloaded
 
        
