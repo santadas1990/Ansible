@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx
+      vars:
+        app: nginx
+      dnf:
+        name: " {{ app }} "
+        state: present
+      tags: install_nginx
+
+    - name: Start Nginx service
+      service:
+        name: " {{ app }} "
+        state: started
+        enabled: true
+      tags: nginx_start
