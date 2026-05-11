@@ -1,0 +1,17 @@
+--- 
+- hosts: all
+  become: true
+  tasks:
+    - name: Firewall reload
+      ansible.posix.firewalld:
+        port: 8081/tcp
+        permanent: true
+        state: enabled
+      notify: Restart firewalld
+
+  handlers:
+    - name: Restart firewalld
+      ansible.posix.firewalld:
+        state: reloaded
+
+       
