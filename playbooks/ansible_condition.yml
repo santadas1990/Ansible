@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install tomcat
+      yum:
+        name: tomcat
+        state: present
+      when: ansible_facts['os_family'] == "redhat"
+
+    - name: Install tomcat
+      dnf:
+        name: tomcat
+        state: present
+      when: ansible_facts['os_family'] == "centos"
