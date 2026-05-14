@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  vars: 
+    apps: [nginx,httpd,mysqldb]
+  tasks:
+    - name: install apps
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ apps }}"
