@@ -2,7 +2,7 @@
 - hosts: all
   become: true
   vars: 
-    apps: [nginx,httpd,mysqldb]
+    apps: [nginx,httpd,mariadb]
   tasks:
     - name: install apps
       yum:
