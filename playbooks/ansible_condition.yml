@@ -7,9 +7,18 @@
         name: tomcat
         state: present
       when: ansible_facts['os_family'] == "RedHat"
+      register: tomcat_install_for_redhat
 
     - name: Install tomcat in cent
       dnf:
         name: tomcat
         state: present
       when: ansible_facts['os_family'] == "CentOS"
+      register: tomcat_install_for_centos
+
+    - name: enable service
+      service:
+        name: tomcat
+        state: started
+        enabled: true
+      when: tomcat_install_for_centos or  tomcat_install_for_redhat
