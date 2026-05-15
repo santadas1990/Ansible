@@ -1,0 +1,13 @@
+---
+- name: Delete users
+  hosts: all
+  become: true
+  tasks:
+    - name: Delete specified users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: absent
+        remove: yes   # also removes home directory
+      loop:
+        - Abhishek
+        - Kunal
