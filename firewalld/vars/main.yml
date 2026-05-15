@@ -1,2 +1,2 @@
 ---
-firewall_service_name: httpd
+firewall_service_name: firewalld
