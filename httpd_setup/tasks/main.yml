@@ -1,19 +1,16 @@
 ---
-- hosts: all
-  become: true
-  tasks:
-    - name: istall httpd
-      yum:
-        name: "{{ httpd_service_name }}"
-        state: present
-  
-    - name: copy the file index.html
-      copy:
-        src: /home/ansibleindex.html
-        dest: /var/www/html/index.html
+- name: install httpd
+  yum:
+    name: "{{ httpd_service_name }}"
+    state: present
 
-    - name: start httpd   
-      service:
-        name: "{{ httpd_service_name }}"
-        state: started
-        enabled: true
+- name: copy the file index.html
+  copy:
+    src: /home/ansible/index.html
+    dest: /var/www/html/index.html
+
+- name: start httpd
+  service:
+    name: "{{ httpd_service_name }}"
+    state: started
+    enabled: true
