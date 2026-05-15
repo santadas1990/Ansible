@@ -1,2 +1,2 @@
 ---
-# vars file for httpd_setup
+httpd_service_name: httpd
