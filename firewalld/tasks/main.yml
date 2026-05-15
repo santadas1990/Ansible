@@ -5,5 +5,5 @@
     state: started
     enabled: true
   become: true
- when: ansible_facts['os_family'] == "RedHat"
- notify: reload firewall
+  when: ansible_facts['os_family'] == "RedHat"
+  notify: reload firewall
