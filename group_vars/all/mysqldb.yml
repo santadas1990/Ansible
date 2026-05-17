@@ -1,0 +1,5 @@
+mysql_port: 3306
+mysql_data_dir: /var/lib/mysql
+mysql_bind_address: 0.0.0.0
+mysql_max_connections: 200
+mysql_log_error: /var/log/mysql/error.log

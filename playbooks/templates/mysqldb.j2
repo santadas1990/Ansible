@@ -1,0 +1,14 @@
+[mysqld]
+user            = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+port            = {{ mysql_port }}
+datadir         = {{ mysql_data_dir }}
+bind-address    = {{ mysql_bind_address }}
+
+# Security
+skip-name-resolve
+max_connections = {{ mysql_max_connections }}
+
+# Logging
+log_error       = {{ mysql_log_error }}
