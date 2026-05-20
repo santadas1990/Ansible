@@ -1,6 +1,6 @@
 Hello {{ name }}!
 
-{% if is_admin %}
+{% if is_admin | default(false) %}
 You have administrator access.
 {% else %}
 You are a regular user.
