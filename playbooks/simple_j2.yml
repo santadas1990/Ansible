@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    name: "Santanu"
+  tasks:
+    - name: Render Jinja2 template
+      template:
+        src: hello.j2
+        dest: /tmp/hello.txt
