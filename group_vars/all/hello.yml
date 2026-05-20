@@ -1,0 +1,6 @@
+name: "Santanu"
+is_admin: true
+fruits:
+  - apple
+  - banana
+  - mango

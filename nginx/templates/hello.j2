@@ -1,0 +1,12 @@
+Hello {{ name }}!
+
+{% if is_admin %}
+You have administrator access.
+{% else %}
+You are a regular user.
+{% endif %}
+
+Your favorite fruits are:
+{% for fruit in fruits %}
+- {{ fruit }}
+{% endfor %}
