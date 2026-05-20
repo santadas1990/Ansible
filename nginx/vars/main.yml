@@ -1,2 +1,8 @@
 ---
+server_name: "example.com"
+redirect_https: true
+ssl_cert: "/etc/letsencrypt/live/example.com/fullchain.pem"
+ssl_key: "/etc/letsencrypt/live/example.com/privkey.pem"
+backend_host: "127.0.0.1"
+backend_port: "8080"
 # vars file for nginx

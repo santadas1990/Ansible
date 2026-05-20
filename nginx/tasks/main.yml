@@ -1,2 +1,21 @@
 ---
+- name: Install Nginx (Debian/Ubuntu)
+  apt:
+    name: nginx
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install Nginx (RHEL/CentOS)
+  dnf:
+    name: nginx
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Deploy Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/conf.d/{{ server_name }}.conf
+  notify:
+    - reload nginx
+
 # tasks file for nginx

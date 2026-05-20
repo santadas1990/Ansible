@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    server_name {{ server_name }};
+
+    {% if redirect_https %}
+    return 301 https://$host$request_uri;
+    {% endif %}
+}
+
+server {
+    listen 443 ssl;
+    server_name {{ server_name }};
+
+    ssl_certificate     {{ ssl_cert }};
+    ssl_certificate_key {{ ssl_key }};
+
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    location / {
+        proxy_pass http://{{ backend_host }}:{{ backend_port }};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
